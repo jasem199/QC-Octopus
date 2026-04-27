@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F7F7F5;
+  --foreground: #1A1A1A;
+  --card-surface: #FFFFFF;
+  --text-secondary: #9A9A9A;
+  --cta-accent: #D2FB6A;
+  --separator: rgba(0,0,0,0.06);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-bottom-bar: 0 -2px 12px rgba(0,0,0,0.07);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card-surface);
+  --color-muted: var(--text-secondary);
+  --color-accent: var(--cta-accent);
+  --color-separator: var(--separator);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #6fb073;
+  background-image: url("/grass-texture.jpg");
+  background-size: 600px;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  color: var(--foreground);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Wheel picker snap scrolling */
+.wheel-picker {
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.wheel-picker::-webkit-scrollbar {
+  display: none;
+}
+
+.wheel-picker-item {
+  scroll-snap-align: center;
+}
+
+/* Spring animation keyframes */
+@keyframes spring-bounce {
+  0% { transform: scale(0.98); }
+  50% { transform: scale(1.01); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+
+
+@keyframes slow-yellow-glow {
+  0% { box-shadow: 0 0 10px rgba(255, 235, 59, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(255, 235, 59, 0.8); }
+  100% { box-shadow: 0 0 10px rgba(255, 235, 59, 0.3); }
+}
+
+.animate-slow-yellow-glow {
+  animation: slow-yellow-glow 4s ease-in-out infinite;
+}
+
+.animate-spring-bounce {
+  animation: spring-bounce 160ms ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 220ms ease-out;
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite ease-in-out;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.settings-row-active {
+  background-color: #F5F5F5;
+  transition: background-color 180ms ease-out;
+}
